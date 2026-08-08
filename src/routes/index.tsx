@@ -291,7 +291,7 @@ function Home() {
                     <span className="mt-3 block font-serif text-2xl">{c.title}</span>
                     <span className="mt-4 block h-px w-0 bg-primary transition-[width] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-16" />
                   </span>
-                </a>
+                </Link>
               </Reveal>
             ))}
           </div>
