@@ -41,7 +41,7 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 xl:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-8 min-[1500px]:flex" aria-label="Primary">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.to}
@@ -66,7 +66,7 @@ export function Header() {
           type="button"
           aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen((v) => !v)}
-          className="text-primary transition-opacity duration-300 hover:opacity-70 xl:hidden"
+          className="text-primary transition-opacity duration-300 hover:opacity-70 min-[1500px]:hidden"
         >
           {open ? <X size={22} strokeWidth={1} /> : <Menu size={22} strokeWidth={1} />}
         </button>
@@ -75,7 +75,7 @@ export function Header() {
       {/* Mobile / tablet overlay menu */}
       <div
         className={cn(
-          "fixed inset-0 top-0 -z-10 flex flex-col justify-center bg-background/98 px-8 backdrop-blur-2xl transition-opacity duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] xl:hidden",
+          "fixed inset-0 top-0 -z-10 flex flex-col justify-center bg-background/98 px-8 backdrop-blur-2xl transition-opacity duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] min-[1500px]:hidden",
           open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0",
         )}
       >
