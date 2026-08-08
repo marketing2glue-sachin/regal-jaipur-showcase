@@ -12,9 +12,11 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as BridalCollectionRouteImport } from './routes/bridal-collection'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CraftsmanshipRouteImport } from './routes/craftsmanship'
 import { Route as CustomJewelleryRouteImport } from './routes/custom-jewellery'
 import { Route as DiamondCollectionRouteImport } from './routes/diamond-collection'
+import { Route as TestimonialsRouteImport } from './routes/testimonials'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -29,6 +31,11 @@ const AboutRoute = AboutRouteImport.update({
 const BridalCollectionRoute = BridalCollectionRouteImport.update({
   id: '/bridal-collection',
   path: '/bridal-collection',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CraftsmanshipRoute = CraftsmanshipRouteImport.update({
@@ -46,31 +53,42 @@ const DiamondCollectionRoute = DiamondCollectionRouteImport.update({
   path: '/diamond-collection',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TestimonialsRoute = TestimonialsRouteImport.update({
+  id: '/testimonials',
+  path: '/testimonials',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/bridal-collection': typeof BridalCollectionRoute
+  '/contact': typeof ContactRoute
   '/craftsmanship': typeof CraftsmanshipRoute
   '/custom-jewellery': typeof CustomJewelleryRoute
   '/diamond-collection': typeof DiamondCollectionRoute
+  '/testimonials': typeof TestimonialsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/bridal-collection': typeof BridalCollectionRoute
+  '/contact': typeof ContactRoute
   '/craftsmanship': typeof CraftsmanshipRoute
   '/custom-jewellery': typeof CustomJewelleryRoute
   '/diamond-collection': typeof DiamondCollectionRoute
+  '/testimonials': typeof TestimonialsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/bridal-collection': typeof BridalCollectionRoute
+  '/contact': typeof ContactRoute
   '/craftsmanship': typeof CraftsmanshipRoute
   '/custom-jewellery': typeof CustomJewelleryRoute
   '/diamond-collection': typeof DiamondCollectionRoute
+  '/testimonials': typeof TestimonialsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -78,34 +96,42 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/bridal-collection'
+    | '/contact'
     | '/craftsmanship'
     | '/custom-jewellery'
     | '/diamond-collection'
+    | '/testimonials'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/bridal-collection'
+    | '/contact'
     | '/craftsmanship'
     | '/custom-jewellery'
     | '/diamond-collection'
+    | '/testimonials'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/bridal-collection'
+    | '/contact'
     | '/craftsmanship'
     | '/custom-jewellery'
     | '/diamond-collection'
+    | '/testimonials'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   BridalCollectionRoute: typeof BridalCollectionRoute
+  ContactRoute: typeof ContactRoute
   CraftsmanshipRoute: typeof CraftsmanshipRoute
   CustomJewelleryRoute: typeof CustomJewelleryRoute
   DiamondCollectionRoute: typeof DiamondCollectionRoute
+  TestimonialsRoute: typeof TestimonialsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -131,6 +157,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BridalCollectionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/craftsmanship': {
       id: '/craftsmanship'
       path: '/craftsmanship'
@@ -152,6 +185,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DiamondCollectionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/testimonials': {
+      id: '/testimonials'
+      path: '/testimonials'
+      fullPath: '/testimonials'
+      preLoaderRoute: typeof TestimonialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -159,9 +199,11 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BridalCollectionRoute: BridalCollectionRoute,
+  ContactRoute: ContactRoute,
   CraftsmanshipRoute: CraftsmanshipRoute,
   CustomJewelleryRoute: CustomJewelleryRoute,
   DiamondCollectionRoute: DiamondCollectionRoute,
+  TestimonialsRoute: TestimonialsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
