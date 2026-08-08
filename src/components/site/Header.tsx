@@ -31,7 +31,7 @@ export function Header() {
           : "border-b border-transparent py-7",
       )}
     >
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 lg:px-12">
+      <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-10 px-6 lg:px-12">
         <Link to="/" className="group flex flex-col leading-none" onClick={() => setOpen(false)}>
           <span className="font-serif text-xl tracking-[0.42em] text-foreground uppercase transition-colors duration-500 group-hover:text-primary">
             Maison
@@ -47,7 +47,7 @@ export function Header() {
               key={link.to}
               to={link.to}
               activeProps={{ className: "text-primary" }}
-              className="relative text-[0.65rem] tracking-[0.24em] text-foreground/75 uppercase transition-colors duration-500 hover:text-primary after:absolute after:-bottom-2 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-500 hover:after:origin-left hover:after:scale-x-100"
+              className="relative whitespace-nowrap text-[0.65rem] tracking-[0.24em] text-foreground/75 uppercase transition-colors duration-500 hover:text-primary after:absolute after:-bottom-2 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-500 hover:after:origin-left hover:after:scale-x-100"
             >
               {link.label}
             </Link>
