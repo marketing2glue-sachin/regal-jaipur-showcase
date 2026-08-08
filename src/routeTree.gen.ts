@@ -11,6 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as BridalCollectionRouteImport } from './routes/bridal-collection'
+import { Route as CraftsmanshipRouteImport } from './routes/craftsmanship'
+import { Route as CustomJewelleryRouteImport } from './routes/custom-jewellery'
+import { Route as DiamondCollectionRouteImport } from './routes/diamond-collection'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +26,86 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BridalCollectionRoute = BridalCollectionRouteImport.update({
+  id: '/bridal-collection',
+  path: '/bridal-collection',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CraftsmanshipRoute = CraftsmanshipRouteImport.update({
+  id: '/craftsmanship',
+  path: '/craftsmanship',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomJewelleryRoute = CustomJewelleryRouteImport.update({
+  id: '/custom-jewellery',
+  path: '/custom-jewellery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiamondCollectionRoute = DiamondCollectionRouteImport.update({
+  id: '/diamond-collection',
+  path: '/diamond-collection',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/bridal-collection': typeof BridalCollectionRoute
+  '/craftsmanship': typeof CraftsmanshipRoute
+  '/custom-jewellery': typeof CustomJewelleryRoute
+  '/diamond-collection': typeof DiamondCollectionRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/bridal-collection': typeof BridalCollectionRoute
+  '/craftsmanship': typeof CraftsmanshipRoute
+  '/custom-jewellery': typeof CustomJewelleryRoute
+  '/diamond-collection': typeof DiamondCollectionRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/bridal-collection': typeof BridalCollectionRoute
+  '/craftsmanship': typeof CraftsmanshipRoute
+  '/custom-jewellery': typeof CustomJewelleryRoute
+  '/diamond-collection': typeof DiamondCollectionRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/bridal-collection'
+    | '/craftsmanship'
+    | '/custom-jewellery'
+    | '/diamond-collection'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to:
+    | '/'
+    | '/about'
+    | '/bridal-collection'
+    | '/craftsmanship'
+    | '/custom-jewellery'
+    | '/diamond-collection'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/bridal-collection'
+    | '/craftsmanship'
+    | '/custom-jewellery'
+    | '/diamond-collection'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  BridalCollectionRoute: typeof BridalCollectionRoute
+  CraftsmanshipRoute: typeof CraftsmanshipRoute
+  CustomJewelleryRoute: typeof CustomJewelleryRoute
+  DiamondCollectionRoute: typeof DiamondCollectionRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +124,44 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/bridal-collection': {
+      id: '/bridal-collection'
+      path: '/bridal-collection'
+      fullPath: '/bridal-collection'
+      preLoaderRoute: typeof BridalCollectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/craftsmanship': {
+      id: '/craftsmanship'
+      path: '/craftsmanship'
+      fullPath: '/craftsmanship'
+      preLoaderRoute: typeof CraftsmanshipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/custom-jewellery': {
+      id: '/custom-jewellery'
+      path: '/custom-jewellery'
+      fullPath: '/custom-jewellery'
+      preLoaderRoute: typeof CustomJewelleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diamond-collection': {
+      id: '/diamond-collection'
+      path: '/diamond-collection'
+      fullPath: '/diamond-collection'
+      preLoaderRoute: typeof DiamondCollectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  BridalCollectionRoute: BridalCollectionRoute,
+  CraftsmanshipRoute: CraftsmanshipRoute,
+  CustomJewelleryRoute: CustomJewelleryRoute,
+  DiamondCollectionRoute: DiamondCollectionRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
