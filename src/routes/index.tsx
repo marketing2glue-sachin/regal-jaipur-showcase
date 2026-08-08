@@ -269,8 +269,8 @@ function Home() {
           <div className="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {collections.map((c, i) => (
               <Reveal key={c.title} delay={i * 90}>
-                <a
-                  href={c.to}
+                <Link
+                  to={c.to}
                   className="lift-card sparkle group relative block aspect-[4/5] overflow-hidden border border-border/60"
                 >
                   <img
