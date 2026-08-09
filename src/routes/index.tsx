@@ -22,6 +22,7 @@ import {
   GoldParticles,
   useMouseParallax,
 } from "@/components/site/Ambience";
+import { Counter } from "@/components/site/Counter";
 import { SITE, WA } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
@@ -188,6 +189,22 @@ function Home() {
                 Chat on WhatsApp
               </LuxAnchor>
             </Reveal>
+
+            <Reveal delay={1220} className="mt-12 flex flex-wrap items-center gap-3">
+              {[
+                "BIS Hallmarked",
+                "IGI · GIA Certified",
+                "Since 1947",
+                "Lifetime Care",
+              ].map((chip) => (
+                <span
+                  key={chip}
+                  className="glass px-4 py-2 text-[0.55rem] tracking-[0.28em] text-muted-foreground uppercase"
+                >
+                  {chip}
+                </span>
+              ))}
+            </Reveal>
           </div>
         </div>
 
@@ -196,6 +213,33 @@ function Home() {
             Scroll
           </span>
           <span className="mx-auto mt-3 block h-12 w-px bg-gradient-to-b from-primary/70 to-transparent" />
+        </div>
+      </section>
+
+      {/* SECTION 1B — Stats */}
+      <section className="border-b border-border/50">
+        <div className="mx-auto grid max-w-[1400px] grid-cols-2 gap-px px-6 lg:grid-cols-4 lg:px-12">
+          {[
+            { to: 78, suffix: "", label: "Years of the house" },
+            { to: 300, suffix: "+", label: "Families each year" },
+            { to: 40, suffix: "", label: "Karigars in atelier" },
+            { to: 1240, suffix: "+", label: "Google reviews" },
+          ].map((s, i) => (
+            <Reveal
+              key={s.label}
+              delay={i * 90}
+              className="border-border/50 py-12 text-center lg:border-l lg:first:border-l-0"
+            >
+              <Counter
+                to={s.to}
+                suffix={s.suffix}
+                className="font-serif text-5xl text-primary lg:text-6xl"
+              />
+              <span className="mt-4 block text-[0.58rem] tracking-[0.3em] text-muted-foreground uppercase">
+                {s.label}
+              </span>
+            </Reveal>
+          ))}
         </div>
       </section>
 
@@ -418,6 +462,122 @@ function Home() {
               Read reviews on Google →
             </a>
           </Reveal>
+        </div>
+      </section>
+
+      {/* SECTION 6B — Signature commissions */}
+      <section className="border-y border-border/50 bg-card py-28 lg:py-36">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
+          <SectionHeading
+            eyebrow="Signature Commissions"
+            title="Pieces that began as a conversation."
+            align="left"
+          />
+          <div className="mt-20 grid gap-6 lg:grid-cols-3">
+            {[
+              {
+                image: bridalImg,
+                title: "The Rathore Bridal Set",
+                tags: ["Polki", "Emerald", "9 months"],
+                text: "A seven-layer ceremonial set rebuilt from a single photograph of a grandmother's necklace.",
+              },
+              {
+                image: diamondImg,
+                title: "The Solitaire Commission",
+                tags: ["GIA 2.4ct", "Platinum", "6 weeks"],
+                text: "A hand-forged setting designed around a single certified stone, chosen over four visits.",
+              },
+            ].map((w, i) => (
+              <Reveal key={w.title} delay={i * 120}>
+                <article className="lift-card sparkle group relative block h-full overflow-hidden border border-border/60">
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <img
+                      src={w.image}
+                      alt={w.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover opacity-75 transition-[transform,opacity] duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 group-hover:opacity-100"
+                    />
+                    <span
+                      aria-hidden
+                      className="absolute inset-0"
+                      style={{ background: "var(--gradient-veil)" }}
+                    />
+                  </div>
+                  <div className="p-8">
+                    <div className="flex flex-wrap gap-2">
+                      {w.tags.map((t) => (
+                        <span
+                          key={t}
+                          className="border border-primary/30 px-3 py-1 text-[0.52rem] tracking-[0.26em] text-primary uppercase"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                    <h3 className="mt-5 font-serif text-2xl">{w.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed font-light text-muted-foreground">
+                      {w.text}
+                    </p>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+
+            <Reveal delay={240} className="glass lift-card flex flex-col justify-between p-10">
+              <div>
+                <Diamond className="opacity-70" />
+                <h3 className="mt-6 font-serif text-3xl">Begin your own commission</h3>
+                <p className="mt-4 text-sm leading-relaxed font-light text-muted-foreground">
+                  Bring a photograph, an heirloom or only a memory. We will sketch it with you
+                  before a single gram of gold is drawn.
+                </p>
+              </div>
+              <div className="mt-10">
+                <LuxLink to="/custom-jewellery" variant="ghost" className="px-0">
+                  Explore bespoke →
+                </LuxLink>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 6C — Instagram */}
+      <section className="py-28 lg:py-36">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
+          <SectionHeading
+            eyebrow="@maisonjaipur"
+            title="From the atelier floor."
+            intro="Short films and fittings, published as they happen."
+          />
+          <div className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+            {[bridalImg, craftImg, diamondImg, goldImg, sketchImg, mensImg].map((img, i) => (
+              <Reveal key={i} delay={i * 70}>
+                <a
+                  href={SITE.instagram}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="group relative block aspect-square overflow-hidden border border-border/60"
+                  aria-label="View this reel on Instagram"
+                >
+                  <img
+                    src={img}
+                    alt="Maison Jaipur atelier reel"
+                    loading="lazy"
+                    className="h-full w-full object-cover opacity-65 transition-[transform,opacity] duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 group-hover:opacity-100"
+                  />
+                  <span className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-700 group-hover:opacity-100">
+                    <span className="ml-1 h-0 w-0 border-y-[7px] border-l-[11px] border-y-transparent border-l-primary" />
+                  </span>
+                </a>
+              </Reveal>
+            ))}
+          </div>
+          <div className="mt-12 flex justify-center">
+            <LuxAnchor href={SITE.instagram} variant="ivory">
+              Follow on Instagram
+            </LuxAnchor>
+          </div>
         </div>
       </section>
 
