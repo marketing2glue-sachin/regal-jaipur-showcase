@@ -16,6 +16,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { WhatsAppFab } from "@/components/site/WhatsAppFab";
 import { LuxuryLoader, PageTransition } from "@/components/site/Loader";
+import { Starfield } from "@/components/site/Starfield";
 
 function NotFoundComponent() {
   return (
@@ -130,6 +131,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <Starfield />
       <LuxuryLoader />
       <PageTransition routeKey={pathname} />
       <Header />
